@@ -1,0 +1,471 @@
+@use "sass:math";
+//<МИКСИНЫ>===============================================================================================
+//</МИКСИНЫ>===============================================================================================
+
+//<ШРИФТЫ>===============================================================================================
+
+//<Подключаем шрифты>=======================================================================================
+//&display=swap&subset=cyrillic-ext
+// @import "_fonts";
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600;700;800&display=swap');
+//</Подключаем шрифты>=======================================================================================
+
+//<Иконочные шрифты>==========================================================================================
+//</Иконочные шрифты>==========================================================================================
+
+//<Шрифт по умолчанию>==========================================================================================
+$fontFamily: "Open Sans", sans-serif;
+$fontWeight: 400;
+//</Шрифт по умолчанию>==========================================================================================
+
+//</ШРИФТЫ>=======================================================================================================
+
+//<ПЕРЕМЕННЫЕ>==========================================================================================================
+$minWidth: 320px;
+$maxWidth: 1920;
+$maxWidthContainer: 970;
+$md1: $maxWidthContainer + 12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+
+$mainColor: #0A0F32;
+$fontSize: 16px;
+
+//</ПЕРЕМЕННЫЕ>===========================================================================================================
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+@import "_null";
+
+body {
+	color: $mainColor;
+	font-weight: $fontWeight;
+	font-family: $fontFamily;
+	font-size: $fontSize;
+	&.lock{
+		overflow: hidden;
+	}
+}
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+
+//<ОБОЛОЧКА>===========================================================================================================
+.wrapper {
+	width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+//</ОБОЛОЧКА>===========================================================================================================
+
+//<ОСНОВНАЯ СЕТКА>===========================================================================================================
+.container {
+	max-width: $maxWidthContainer + px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+// @import "_forms";
+@import "_ui";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+@import "_header";
+@import "_footer";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+
+//<ОСНОВНОЙ БЛОК>====================================================================================================
+.main-page {
+	flex: 1 1 auto;
+}
+//===================================================================================================================================
+
+// HOME
+.main-home {
+	height: 100vh;
+	height: calc(var(--vh) * 100);
+	position: relative;
+}
+.main-home__image{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	& img{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center 60%;
+	}
+}
+.home {
+	height: 100%;
+	padding-top: 40px;
+	padding-bottom: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
+	color: #fff;
+	position: relative;
+	z-index: 2;
+}
+.home__logo {
+	display: block;
+	align-self: flex-start;
+	margin: 0 0 30px;
+}
+.home__middle {
+	margin-top: auto;
+}
+.home__title {
+	font-size: 9vw;
+	line-height: 116%;
+	letter-spacing: 5.70937px;
+	font-family: 'Bebas Neue', cursive;
+}
+.home__subtitle {
+	font-size: 16px;
+	line-height: 118%;
+	margin: 20px 0 20px;
+}
+.home__button {
+	margin-top: auto;
+	display: block;
+	color: #fff;
+	font-size: 11px;
+	line-height: 118%;
+	letter-spacing: 3.7px;
+}
+@media (any-hover: hover) {
+	.home__button {
+		animation: bounce2 2s ease-in infinite;
+	}
+	@keyframes bounce2 {
+		0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+		40% {transform: translateY(-25px);}
+		60% {transform: translateY(-15px);}
+	}
+}
+
+
+// STORY
+
+.story {
+	padding: 50px 0 30px;
+}
+.block-title {
+	display: inline-block;
+	font-size: 18px;
+	line-height: 116%;
+	padding: 0 0 13px;
+	font-weight: 700;
+	letter-spacing: 2.30625px;
+	position: relative;
+	&::before{
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translate(-50%, 0);
+		height: 2px;
+		width: 52px;
+		background: #00A4E5;
+	}
+}
+.story .block-title{
+	margin: 0 0 30px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
+.story__title {
+}
+.story__descr {
+	font-size: 13px;
+	line-height: 176%;
+	max-width: 100%;
+	color: #48555B;
+	letter-spacing: 0.1875px;
+	& p:not(:last-child){
+		margin: 0 0 29px;
+	}
+}
+.story__descr_bold{
+	font-size: 20px;
+	line-height: 132%;
+	letter-spacing: 0.1875px;
+	font-weight: 700;
+	& a{
+		color: #00A4E5;
+	}
+}
+.story__cards {
+	margin: 30px 0 0;
+}
+.story__card {
+	width: 100%;
+	display: block;
+	position: relative;
+	transition: transform .3s ease-in 0s;
+	&:not(:last-child){
+		margin: 0 0 20px;
+	}
+}
+.story-card {}
+.story-card__img {
+	display: block;
+	overflow: hidden;
+	position: relative;
+	padding-bottom: 60%;
+	& img{
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform .3s ease-in 0s;
+	}
+}
+.story__card:hover .story-card__img img{
+	transform: scale(1.2);
+}
+.story-card__content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 15px 14px;
+}
+.story-card__text {
+	cursor: default;
+	position: relative;
+	z-index: 3;
+	font-size: 24px;
+	line-height: 120%;
+	font-weight: 800;
+	color: #fff;
+}
+
+// CAPABILITIES
+.capabilities {
+	padding: 40px 0 50px;
+}
+.capabilities .block-title{
+	position: static;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+}
+.capabilities .block-title::before{
+	content: none;
+}
+.capabilities__title {
+	position: relative;
+	padding: 0 0 14px;
+	&::before{
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translate(-50%, 0);
+		height: 2px;
+		width: 52px;
+		background: #00A4E5;
+	}
+}
+.capabilities__box {
+	margin: 30px 0 30px;
+}
+.capabilities__descr {
+	max-width: 100%;
+	margin: 0 0px 30px 0;
+	font-size: 11px;
+	line-height: 172%;
+	color: #48555B;
+	letter-spacing: 0.2px;
+}
+.general__link {
+	display: block;
+	padding: 11px 29px;
+	font-size: 13px;
+	line-height: 115%;
+	letter-spacing: 0.5px;
+	font-weight: 700;
+	color: #FFFFFF;
+	background: #00A4E5;
+	min-height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: auto;
+	overflow: hidden;
+	transition: all .2s ease 0s;
+	& span{
+		position: relative;
+		z-index: 2;
+	}
+}
+.general__link span:before{
+	content: "";
+	position: absolute;
+	left: var(--x);
+	top: var(--y);
+	transform: translate(-50%, -50%);
+	width: 0px;
+	height: 0px;
+	background: #004864;
+	border-radius: 50%;
+	transition: width 0.5s, height 0.5s;
+	z-index: -1;
+}
+.general__link:hover span::before{
+	width: 300px;
+	height: 300px;
+}
+
+.capabilities__card {
+	padding: 38px 22px 39px;
+	background: #FFFFFF;
+	border: 1px solid #E6E6E6;
+	display: flex;
+	flex-direction: column;
+}
+.capabilities__card:not(:last-child){
+	margin: 0 0 20px;
+}
+
+.capabilities__icon {}
+.capabilities__content {
+	flex: 1 1 auto;
+	padding: 25px 0 0;
+}
+.capabilities__name {
+	font-size: 16px;
+	line-height: 153%;
+	font-weight: 700;
+	letter-spacing: 0.426667px;
+	color: #48555B;
+	&:not(:last-child){
+		margin: 0 0 13px;
+	}
+}
+.capabilities__text {
+	font-size: 13px;
+	line-height: 176%;
+	letter-spacing: 0.1875px;
+	color: #48555B;
+}
+
+// BUILD
+.build {
+	padding: 60px 0 150px;
+	background: url('../img/build.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}
+.container {}
+.build__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.build__title {
+	font-size: 30px;
+	line-height: 120%;
+	letter-spacing: -0.3px;
+	color: #48555B;
+	font-weight: 800;
+	margin: 0 0 35px;
+	max-width: 350px;
+	text-align: center;
+}
+.build__link {
+	margin: 0 auto;
+	padding: 11px 26px;
+}
+.signup {
+	background: #171819;
+	padding: 30px 0 30px;
+}
+.signup__container {
+}
+.signup__title {
+	font-size: 22px;
+	line-height: 118%;
+	letter-spacing: 0.3px;
+	font-weight: 800;
+	color: #FFFFFF;
+	margin: 0 0px 20px 0;
+}
+.signup__form {
+	display: flex;
+	overflow: hidden;
+}
+.signup__input {
+	width: 100%;
+	background: #FFFFFF;
+	border: 1px solid #979797;
+	border-right: none;
+	padding: 11px 16px;
+	font-size: 14px;
+	line-height: 114%;
+	letter-spacing: 0.07px;
+	color: #48555B;
+	min-height: 40px;
+	&::placeholder{
+		font-size: 14px;
+		line-height: 114%;
+		letter-spacing: 0.5px;
+		color: #48555B;
+	}
+}
+.signup__button {
+	display: block;
+	padding: 11px 49px;
+	font-size: 13px;
+	line-height: 115%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	text-align: center;
+	letter-spacing: 0.5px;
+	color: #FFFFFF;
+	background: #00A4E5;
+	font-weight: 700;
+	overflow: hidden;
+	& span{
+		position: relative;
+		z-index: 2;
+	}
+}
+.signup__button span:before{
+	content: "";
+	position: absolute;
+	left: var(--x);
+	top: var(--y);
+	transform: translate(-50%, -50%);
+	width: 0px;
+	height: 0px;
+	background: #004864;
+	border-radius: 50%;
+	transition: width 0.5s, height 0.5s;
+	z-index: -1;
+}
+.signup__button:hover span::before{
+	width: 300px;
+	height: 300px;
+}
+//</ОСНОВНОЙ БЛОК>====================================================================================================
+@import "_media";
